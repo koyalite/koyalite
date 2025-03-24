@@ -1,0 +1,14 @@
+{
+    "name": "@koyalite/auth",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "scripts": {
+      "dev": "ts-node-dev src/index.ts",
+      "build": "tsc"
+    },
+    "devDependencies": {
+      "ts-node-dev": "^2.0.0",
+      "typescript": "^5.0.0"
+    }
+  }
+  

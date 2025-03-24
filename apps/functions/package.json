@@ -1,0 +1,13 @@
+{
+    "name": "@koyalite/functions",
+    "version": "0.1.0",
+    "main": "src/helloWorld.ts",
+    "scripts": {
+      "dev": "ts-node-dev src/helloWorld.ts"
+    },
+    "devDependencies": {
+      "ts-node-dev": "^2.0.0",
+      "typescript": "^5.0.0"
+    }
+  }
+  
