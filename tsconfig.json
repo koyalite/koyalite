@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",                     
+      "module": "commonjs",                   
+      "lib": ["ES2020", "DOM"],               
+      "rootDir": ".",                         
+      "outDir": "dist",                       
+      "strict": true,                         
+      "esModuleInterop": true,                
+      "forceConsistentCasingInFileNames": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true, 
+      "skipLibCheck": true,                   
+      "moduleResolution": "node",             
+      "resolveJsonModule": true,              
+      "baseUrl": ".",                         
+      "paths": {
+        "@koyalite/*": ["./apps/*/src"],
+        "@services/*": ["./services/*"],
+        "@types": ["./types"]
+      }
+    },
+    "include": [
+      "apps/**/*",
+      "cli/**/*",
+      "services/**/*",
+      "types/**/*"
+    ],
+    "exclude": [
+      "node_modules",
+      "dist"
+    ]
+  }
+  
