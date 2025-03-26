@@ -1,0 +1,22 @@
+{
+    "name": "@koyalite/cli",
+    "version": "0.1.0",
+    "description": "The official KoyaLite CLI tool for project scaffolding, development, and deployment.",
+    "bin": {
+        "koyalite": "dist/index.js"
+    },
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "dev": "ts-node-dev src/index.ts",
+        "build": "tsc -p tsconfig.build.json",
+        "start": "node dist/index.js"
+    },
+    "dependencies": {
+        "commander": "^10.0.0"
+    },
+    "devDependencies": {
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^5.8.2"
+    }
+}

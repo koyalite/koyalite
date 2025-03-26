@@ -1,0 +1,35 @@
+{
+    "name": "@koyalite/client",
+    "version": "0.1.0",
+    "description": "Typed client SDK for interacting with KoyaLite BaaS APIs (Auth, Database, Storage, etc.)",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "dev": "ts-node-dev src/index.ts",
+        "build": "tsc -p tsconfig.build.json",
+        "start": "node dist/index.js"
+    },
+    "keywords": [
+        "koyalite",
+        "sdk",
+        "client",
+        "api",
+        "baas"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "typescript": "^5.0.0",
+        "ts-node-dev": "^2.0.0"
+    }
+}
