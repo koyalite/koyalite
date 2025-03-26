@@ -1,34 +1,37 @@
 {
     "compilerOptions": {
-      "target": "ES2020",                     
-      "module": "commonjs",                   
-      "lib": ["ES2020", "DOM"],               
-      "rootDir": ".",                         
-      "outDir": "dist",                       
-      "strict": true,                         
-      "esModuleInterop": true,                
-      "forceConsistentCasingInFileNames": true,
-      "noUnusedLocals": true,
-      "noUnusedParameters": true, 
-      "skipLibCheck": true,                   
-      "moduleResolution": "node",             
-      "resolveJsonModule": true,              
-      "baseUrl": ".",                         
-      "paths": {
-        "@koyalite/*": ["./apps/*/src"],
-        "@services/*": ["./services/*"],
-        "@types": ["./types"]
-      }
+        "target": "ES2020",
+        "module": "commonjs",
+        "lib": ["ES2020", "DOM"],
+        "rootDir": ".",
+        "outDir": "dist",
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "skipLibCheck": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "baseUrl": ".",
+        "paths": {
+            "@koyalite/db-package": ["packages/db/src"],
+            "@koyalite/auth-package": ["packages/auth/src"],
+            "@koyalite/client-package": ["packages/client/src"],
+            "@koyalite/logger-package": ["packages/logger/src"],
+            "@koyalite/utils-package": ["packages/utils/src"],
+            "@koyalite/cli-package": ["packages/cli/src"],
+            "@koyalite/functions/*": ["functions/*"],
+            "@koyalite/api-service": ["services/api/src"],
+            "@koyalite/email-service": ["services/email/src"],
+            "@koyalite/auth-service": ["services/auth/src"],
+            "@koyalite/search-service": ["services/search/src"],
+            "@koyalite/storage-service": ["services/storage/src"],
+            "@koyalite/analytics-service": ["services/analytics/src"],
+            "@koyalite/rls-service": ["services/rls/src"],
+            "@koyalite/@types": ["./packages/types/src"]
+        }
     },
-    "include": [
-      "apps/**/*",
-      "cli/**/*",
-      "services/**/*",
-      "types/**/*"
-    ],
-    "exclude": [
-      "node_modules",
-      "dist"
-    ]
-  }
-  
+    "include": ["apps/**/*", "cli/**/*", "services/**/*", "types/**/*"],
+    "exclude": ["node_modules", "dist", "build", "coverage"]
+}
