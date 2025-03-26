@@ -3,7 +3,6 @@
     "version": "0.1.0",
     "main": "src/pages/index.tsx",
     "scripts": {
-      "dev": "echo 'Use Next.js here'"
+        "dev": "echo 'Use Next.js here'"
     }
-  }
-  
+}
