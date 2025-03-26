@@ -1,37 +1,25 @@
-# KoyaLite
+# 🌿 KoyaLite – Open Source Backend-as-a-Service (BaaS)
 
-**KoyaLite** is a lightweight, open-source backend-as-a-service (BaaS) platform built around [SQLite](https://sqlite.org/). Designed for indie developers, solo founders, and small teams who want a fast, self-hostable backend without the complexity of cloud-native infrastructure.
+KoyaLite is a self-hostable, SQLite-first backend-as-a-service designed for indie developers, small teams, and local-first applications. It gives you the power of Postgres-level APIs, row-level security, edge functions, and more — all with the simplicity of SQLite.
 
+## 🚀 Key Features
 
-
-## Vision
-
-Empower developers to build apps with confidence and control — without needing to manage complex infrastructure.
-
-
-
-## Mission
-
-KoyaLite delivers essential backend services — authentication, APIs, file storage, edge functions, and admin tools — in a modular stack you can run locally, self-host, or scale when you're ready.
-
-
-
-## ⚙️ Core Features
-
-- ⚡️ SQLite-first backend with zero config
-- 🔐 Authentication with [Lucia](https://lucia-auth.com/) + Arctic
-- 🔄 Auto-generated REST + GraphQL APIs
-- 🗂️ S3-compatible file storage via MinIO
-- 🌍 Edge function support (Deno or Bun)
-- 🧩 Row-Level Security (RLS) with visual policy editor
-- 🛠️ Developer CLI (`koyalite`) with project scaffolding
-- 📊 Optional admin dashboard and DB studio
-- 🔧 Extendable with plugins (e.g., Strapi, MongoDB)
-- 📦 Optional typed client SDK via `@koyalite/client`
-- 📄 Swagger/OpenAPI + GraphQL Playground for exploring APIs
-- 📚 Documentation powered by [Docusaurus](https://docusaurus.io/)
-
-
+- 🗂️ **Monorepo architecture** with clean separation of services, apps, and shared packages
+- ⚡ **SQLite with FTS5** for fast, full-text local search
+- 🔐 **Lucia + Arctic Auth** with RBAC and Row-Level Security (RLS)
+- 🧠 **Self-hosted analytics** via PostHog (optional)
+- 🔎 **Weaviate integration** for vector/hybrid semantic search
+- 📊 **Admin dashboard** (Studio) for DB + API management
+- 🌍 **Edge functions** (Bun or Deno runtime)
+- 🔐 **Secrets encryption** + management CLI
+- 🧪 **CLI project generator** (`create-koyalite-app`)
+- 🧩 **Row-Level Security** (RLS) with policy editor
+- 📦 **Auto-generated REST + GraphQL APIs**
+- 🗂️ **S3-compatible file storage** via MinIO
+- 🧰 **CLI Tool (`koyalite`)** to manage functions, DB, studio, and more
+- 🧪 **In-memory SQLite** support for blazing-fast tests
+- 🧾 **Documentation powered by Docusaurus**
+- 🔧 **Developer-friendly setup** with TypeScript, path aliases, and workspace tooling
 
 ## 🧰 Ideal Use Cases
 
@@ -45,8 +33,6 @@ KoyaLite is perfect for building:
 - 📲 Mobile app backends with authentication and APIs
 - 🧾 Static sites with dynamic sections powered by lightweight APIs
 
-
-
 ## 📜 Philosophy: Open-Source & Affordable Tools
 
 KoyaLite is built on the principle that powerful backend infrastructure **should be accessible to everyone**. By using best-in-class open-source tools and avoiding costly vendor lock-in, KoyaLite enables:
@@ -57,6 +43,7 @@ KoyaLite is built on the principle that powerful backend infrastructure **should
 - 🤝 **Community ownership** – Built to be contributed to, not just consumed
 
 Open tools used include:
+
 - [SQLite](https://sqlite.org/) for the database
 - [Lucia](https://lucia-auth.com/) + Arctic for authentication
 - [MinIO](https://min.io/) for file storage
@@ -65,44 +52,178 @@ Open tools used include:
 - [Docusaurus](https://docusaurus.io/) for documentation
 - [Swagger/OpenAPI](https://swagger.io/) for auto API docs
 
+## 🧠 Developer Experience Enhancements
 
+KoyaLite is built with DX-first principles:
 
-## 🧠 Developer Experience Enhancements (DX)
+- ⚡ Hot reloading dev server
+- 🧪 CLI testing tools for auth, functions, APIs
+- 🧱 Project scaffolding CLI (`npx create-koyalite-app`)
+- 🧩 Shared types with path aliases (`@services/*`, `@koyalite/*`)
+- 🖥️ Admin dashboard for roles, RLS, data viewing
+- 🧾 Code snippet generator in docs (REST, GraphQL, SDK)
+- 🔒 Audit logging support
+- 🔐 CLI secrets encryption
+- 📊 Schema visualizer / ERD support
+- 🧪 Type-safe `tsconfig.json` across services
 
-KoyaLite is being designed with a developer-first mindset, featuring tools that make backend work intuitive and fast:
-
-- ⚡ **Hot reloading dev server** — Iterate rapidly while editing edge functions, routes, or schemas
-- 🧪 **CLI test utilities** — Run local tests for auth flows, edge functions, and database logic
-- 🖥️ **Visual Studio** — A clean admin dashboard for managing DB content, roles, RLS, and API traffic
-- 📄 **Code snippet generator** — Copy-paste REST, GraphQL, or SDK usage directly from the docs
-- 🧱 **Project scaffolding CLI** — Create new apps via `npx create-koyalite-app` with framework/auth/add-on choices
-- 📊 **Schema visualizer** — Auto-generate ERDs to visualize your SQLite relationships
-- 🧩 **Plugin & hook system** — Add custom logic to events like auth, storage, or post-processing
-- 🔐 **Audit logging** — Track key system events such as logins, data edits, and role changes
-- 🔒 **Secrets helper CLI** — Encrypt `.env` files for safer sharing in deployment pipelines
-
-
-
-## 📁 Project Structure
+## 🧱 Project Structure
 
 ```
 koyalite/
 ├── apps/
+│   ├── cli/
+│   ├── dashboard/
+│   └── studio/
+│
+├── services/
 │   ├── api/
 │   ├── auth/
-│   ├── functions/
-│   └── studio/
-├── cli/
-├── docker/
-├── docs/                  # Docusaurus documentation site
-├── logs/
-├── services/
 │   ├── email/
 │   ├── rls/
+│   ├── analytics/
+│   ├── search/
 │   └── storage/
+│
+├── packages/
+│   ├── db/
+│   ├── auth/
+│   ├── sdk/
+│   ├── logger/
+│   └── utils/
+│
+├── functions/
+│   ├── hello-world.ts
+│   ├── user-signed-up.ts
+│   └── tsconfig.json
+│
+├── tests/
+│   └── api.test.ts
+│
+├── docker/
+│   ├── posthog/
+│   ├── weaviate/
+│   └── compose.yml
+│
+├── docs/                    # Docusaurus site for documentation
+│
+├── .env
+├── .env.test
+├── .gitignore
+├── package.json
+├── tsconfig.json
+├── .eslintrc.js
+├── .prettierrc
 └── README.md
 ```
 
+## 📦 Monorepo with Workspaces
+
+```jsonc
+{
+    "workspaces": ["apps/*", "services/*", "packages/*", "functions"],
+}
+```
+
+## 🧠 Path Aliases with TypeScript
+
+```jsonc
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@koyalite/db": ["packages/db/src"],
+            "@koyalite/auth": ["packages/auth/src"],
+            "@koyalite/sdk": ["packages/sdk/src"],
+            "@koyalite/logger": ["packages/logger/src"],
+            "@koyalite/utils": ["packages/utils/src"],
+            "@koyalite/api": ["services/api/src"],
+            "@koyalite/email": ["services/email/src"],
+            "@koyalite/auth-service": ["services/auth/src"],
+            "@koyalite/search": ["services/search/src"],
+            "@koyalite/storage": ["services/storage/src"],
+            "@koyalite/analytics": ["services/analytics/src"],
+            "@koyalite/rls": ["services/rls/src"],
+            "@koyalite/functions": ["functions"],
+            "@koyalite/functions/*": ["functions/*"],
+        },
+    },
+}
+```
+
+## 📚 Documentation (Docusaurus)
+
+KoyaLite's official documentation lives in the `docs/` folder and is powered by [Docusaurus](https://docusaurus.io/).
+
+### To start the docs locally:
+
+```bash
+cd docs
+pnpm install
+pnpm start
+```
+
+You can write guides, API reference, CLI usage, and architecture breakdowns in Markdown and Docusaurus will handle the rest.
+
+## 🐳 Docker Compose
+
+```bash
+cd docker
+docker-compose -f compose.yml up -d
+```
+
+Includes:
+
+- `api`, `auth`, `dashboard`, `studio`, `storage`
+- Optional: `posthog`, `weaviate`, `minio`
+
+## 🧰 CLI Usage
+
+```bash
+npx koyalite init
+npx koyalite start
+npx koyalite studio
+npx koyalite functions deploy
+npx koyalite auth login
+```
+
+## ⚡ Edge Functions
+
+```ts
+// functions/hello-world.ts
+import { defineFunction } from "koyalite/runtime";
+
+export default defineFunction(async (ctx) => {
+    return new Response(`Hello ${ctx.auth?.user?.email ?? "World"}!`);
+});
+```
+
+Deploy with:
+
+```bash
+koyalite functions deploy
+```
+
+## 🧪 Testing
+
+```bash
+pnpm test
+```
+
+Runs tests using in-memory SQLite. Configured via `.env.test`.
+
+## 📈 Analytics with PostHog
+
+```env
+POSTHOG_API_KEY=phc_...
+POSTHOG_HOST=http://localhost:8000
+```
+
+## 🔍 Vector Search with Weaviate
+
+```bash
+docker-compose up weaviate
+```
 
 ## 📋 Logging & Monitoring
 
@@ -113,15 +234,11 @@ KoyaLite includes a full-featured logging system:
 - 📂 Logs from all services are written to the `logs/` directory
 - 🧩 Easily view, search, and visualize logs in Grafana
 
-
-
 ## 🧪 Status
 
 🧱 Currently in early development — working on the core stack, CLI tooling, and initial service integration.  
 Star the repo and follow along — contributions and ideas welcome!
 
+## 📄 License
 
-
-## 📜 License
-
-KoyaLite is open-source under the **MIT License**. See [LICENSE](./LICENSE) for details.
+MIT © Greedless Tech
