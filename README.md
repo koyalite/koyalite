@@ -7,7 +7,7 @@ KoyaLite is a self-hostable, SQLite-first backend-as-a-service designed for indi
 - 🗂️ **Monorepo architecture** with clean separation of services, apps, and shared packages
 - ⚡ **SQLite with FTS5** for fast, full-text local search
 - 🔐 **Lucia + Arctic Auth** with RBAC and Row-Level Security (RLS)
-- 🧠 **Self-hosted analytics** via PostHog (optional)
+- 🧠 **Self-hosted analytics** via PostHog
 - 🔎 **Weaviate integration** for vector/hybrid semantic search
 - 📊 **Admin dashboard** (Studio) for DB + API management
 - 📧 **Send Emails** using Resend
@@ -16,7 +16,7 @@ KoyaLite is a self-hostable, SQLite-first backend-as-a-service designed for indi
 - 🧪 **CLI project generator** (`create-koyalite-app`)
 - 🧩 **Row-Level Security** (RLS) with policy editor
 - 📦 **Auto-generated REST + GraphQL APIs**
-- 🗂️ **S3-compatible file storage** via MinIO
+- 🗂️ **S3-compatible file storage** via SeaweedFS
 - 🧰 **CLI Tool (`koyalite`)** to manage functions, DB, studio, and more
 - 🧪 **In-memory SQLite** support for blazing-fast tests
 - 🧾 **Documentation powered by Docusaurus**
@@ -47,7 +47,7 @@ Open tools used include:
 
 - [SQLite](https://sqlite.org/) for the database
 - [Lucia](https://lucia-auth.com/) + [Arctic](https://arcticjs.dev/) for OAuth authentication
-- [MinIO](https://min.io/) for file storage
+- [SeaweedFS](https://github.com/seaweedfs/seaweedfs) for file storage
 - [Pino](https://github.com/pinojs/pino) for logging
 - [Grafana + Loki](https://grafana.com/oss/loki/) for observability
 - [Docusaurus](https://docusaurus.io/) for documentation
@@ -177,8 +177,7 @@ docker-compose -f compose.yml up -d
 
 Includes:
 
-- `api`, `auth`, `dashboard`, `studio`, `storage`
-- Optional: `posthog`, `weaviate`, `minio`
+- `api`, `auth`, `dashboard`, `studio`, `storage`, `posthog`, `weaviate`
 
 ## 🧰 CLI Usage
 
