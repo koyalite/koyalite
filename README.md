@@ -10,6 +10,7 @@ KoyaLite is a self-hostable, SQLite-first backend-as-a-service designed for indi
 - 🧠 **Self-hosted analytics** via PostHog (optional)
 - 🔎 **Weaviate integration** for vector/hybrid semantic search
 - 📊 **Admin dashboard** (Studio) for DB + API management
+- 📧 **Send Emails** using Resend
 - 🌍 **Edge functions** (Bun or Deno runtime)
 - 🔐 **Secrets encryption** + management CLI
 - 🧪 **CLI project generator** (`create-koyalite-app`)
@@ -45,12 +46,14 @@ KoyaLite is built on the principle that powerful backend infrastructure **should
 Open tools used include:
 
 - [SQLite](https://sqlite.org/) for the database
-- [Lucia](https://lucia-auth.com/) + Arctic for authentication
+- [Lucia](https://lucia-auth.com/) + [Arctic](https://arcticjs.dev/) for OAuth authentication
 - [MinIO](https://min.io/) for file storage
 - [Pino](https://github.com/pinojs/pino) for logging
 - [Grafana + Loki](https://grafana.com/oss/loki/) for observability
 - [Docusaurus](https://docusaurus.io/) for documentation
 - [Swagger/OpenAPI](https://swagger.io/) for auto API docs
+- [React.email](https://react.email/) for styling emails
+- [Posthog](https://posthog.com/) for analytics
 
 ## 🧠 Developer Experience Enhancements
 
