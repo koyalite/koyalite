@@ -1,5 +1,5 @@
 {
-    "name": "@koyalite/studio",
+    "name": "@koyalite/dashboard",
     "version": "0.1.0",
     "main": "src/pages/index.tsx",
     "private": true,

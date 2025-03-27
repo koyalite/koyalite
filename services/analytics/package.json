@@ -1,0 +1,11 @@
+{
+    "name": "@services/analytics",
+    "version": "0.1.0",
+    "private": true,
+    "main": "src/posthog.ts",
+    "types": "src/posthog.ts",
+    "description": "PostHog integration for self-hosted KoyaLite analytics",
+    "dependencies": {
+        "posthog-node": "^3.0.1"
+    }
+}
