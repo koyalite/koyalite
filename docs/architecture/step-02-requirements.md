@@ -1,34 +1,4 @@
-# Software Design & Architecture Planning
-
-## 1. Why and Who?
-
-**Why does KoyaLite exist?**
-
-- To empower solo developers, small teams, and startups to launch full-stack apps fast, without needing to manage backend infrastructure.
-
-- Offer Supabase-like functionality but more lightweight, simpler to self-host, and tailored for projects that don't need a full-blown Postgres setup.
-
-- Designed around SQLite to reduce complexity while still enabling powerful features like auth, storage, APIs, and RLS.
-
-**Who is this built for?**
-
-- Solo developers
-
-- Small teams
-
-- Startups
-
-- Hackathon participants
-
-- Bootstrappers
-
-- Open-source builders
-
-- Indie hackers who want to focus on frontend or product logic
-
-## 2. Define Functional & Non-Functional Requirements
-
-✅ Functional Requirements
+# ✅ Functional Requirements
 
 KoyaLite aims to offer a streamlined developer experience by including a set of essential backend features out-of-the-box:
 
@@ -97,7 +67,7 @@ KoyaLite aims to offer a streamlined developer experience by including a set of 
 
 - **Environment Support**: Built-in support for managing dev, staging, and production environments.
 
-⚙️ **Non-Functional Requirements**
+# ⚙️ **Non-Functional Requirements**
 
 - **Performance Monitoring (APM) Support**: Optional integration with open-source tools such as SigNoz, OpenTelemetry, or HyperDX to trace performance bottlenecks across APIs, edge functions, and DB operations.
 
