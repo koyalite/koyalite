@@ -2,6 +2,8 @@
 
 KoyaLite aims to offer a streamlined developer experience by including a set of essential backend features out-of-the-box:
 
+- **Project Service**: Central service responsible for creating, updating, provisioning, and managing all project-related metadata, settings, compliance flags, and cascading deletions. Supports CLI, API, and UI interfaces for full lifecycle management.
+
 - **Function Versioning Support**: Edge functions may support versioning, enabling developers to roll back to previous versions, test new changes safely, and manage different stages of deployment.
 
 - **Scheduled Jobs (Cron-like Tasks)**: Future support for scheduled tasks or cron jobs that allow functions or services to execute periodically without external triggers.
