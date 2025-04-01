@@ -62,7 +62,25 @@ These commands call internal service APIs or read from a .koyalite/config.json.
 
 Each service exposes clear contracts via TypeScript interfaces or REST endpoints. Examples:
 
-**ProjectService**
+**Search Service**
+
+    interface SearchService {
+        indexDocument(table: string, record: any): Promise<void>
+        deleteDocument(table: string, recordId: string): Promise<void>
+        search(query: string, table: string): Promise<SearchResult[]>
+        createVectorIndex(config: VectorIndexConfig): Promise<void>
+    }
+
+**RLS Service**
+
+    interface RLSService {
+        evaluatePolicy(userId: string, table: string, action: string): Promise<boolean>
+        getPoliciesForTable(table: string): Promise<RLSPolicy[]>
+        createPolicy(policy: RLSPolicyInput): Promise<void>
+        deletePolicy(id: string): Promise<void>
+    }
+
+**Project Service**
 
     interface ProjectService {
         createProject(input: CreateProjectInput): Promise<Project>
@@ -71,7 +89,7 @@ Each service exposes clear contracts via TypeScript interfaces or REST endpoints
         getProjectById(id: string): Promise<Project | null>
     }
 
-**FunctionService**
+**Function Service**
 
     interface FunctionService {
         deploy(name: string, source: string): Promise<FunctionDeployment>
@@ -79,7 +97,7 @@ Each service exposes clear contracts via TypeScript interfaces or REST endpoints
         scheduleCron(id: string, cron: string): Promise<void>
     }
 
-**AuthService**
+**Auth Service**
 
     
     interface AuthService {
@@ -88,7 +106,6 @@ Each service exposes clear contracts via TypeScript interfaces or REST endpoints
         impersonate(adminId: string, userId: string): Promise<Session>
     }
     
-
 ---
 
 ## Testing & Mocks
