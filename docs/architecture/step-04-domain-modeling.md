@@ -1,3 +1,5 @@
+# Step 4: Domain Modeling
+
 ## Purpose
 
 Domain modeling defines the core entities, relationships, and rules that shape how data and logic behave inside KoyaLite. It is essential for API generation, access control, storage, and internal consistency.

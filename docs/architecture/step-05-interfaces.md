@@ -1,3 +1,5 @@
+# Step 5: Define Interfaces and Contracts
+
 This step defines how internal services, APIs, and modules within KoyaLite communicate with each other and with external consumers like frontend apps, CLI tools, or SDKs.
 
 Interfaces help enforce modularity, testability, and clarity across system boundaries.

@@ -1,4 +1,6 @@
-# ✅ Functional Requirements
+# Define Requirements (Functional and Non-Functional)
+
+## ✅ Functional Requirements
 
 KoyaLite aims to offer a streamlined developer experience by including a set of essential backend features out-of-the-box:
 
@@ -69,7 +71,7 @@ KoyaLite aims to offer a streamlined developer experience by including a set of 
 
 - **Environment Support**: Built-in support for managing dev, staging, and production environments.
 
-# ⚙️ **Non-Functional Requirements**
+## ⚙️ **Non-Functional Requirements**
 
 - **Performance Monitoring (APM) Support**: Optional integration with open-source tools such as SigNoz, OpenTelemetry, or HyperDX to trace performance bottlenecks across APIs, edge functions, and DB operations.
 

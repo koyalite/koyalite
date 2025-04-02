@@ -1,3 +1,5 @@
+# Step 4.5: Additional Modeling Layers
+
 ## Bounded Contexts
 
 KoyaLite can be decomposed into several bounded contexts, each representing a logically independent part of the system:
