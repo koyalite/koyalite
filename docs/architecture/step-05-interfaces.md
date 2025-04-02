@@ -10,7 +10,7 @@ Interfaces help enforce modularity, testability, and clarity across system bound
 
 KoyaLite auto-generates REST and GraphQL APIs based on database schema. These APIs expose CRUD operations and respect RLS policies.
 
-**REST API**
+### REST API
 
 - Path structure: /rest/:table
 
@@ -22,7 +22,7 @@ KoyaLite auto-generates REST and GraphQL APIs based on database schema. These AP
 
 - OpenAPI Spec: /docs/openapi.json
 
-**GraphQL API**
+### GraphQL API
 
 - Path: /graphql
 
@@ -32,7 +32,7 @@ KoyaLite auto-generates REST and GraphQL APIs based on database schema. These AP
 
 - GraphQL Playground enabled in dev
 
-**SDK (TypeScript)**
+### SDK (TypeScript)
 
 - Thin wrapper over REST/GraphQL APIs
 
@@ -64,7 +64,7 @@ These commands call internal service APIs or read from a .koyalite/config.json.
 
 Each service exposes clear contracts via TypeScript interfaces or REST endpoints. Examples:
 
-**Search Service**
+### Search Service
 
     interface SearchService {
         indexDocument(table: string, record: any): Promise<void>
@@ -73,7 +73,7 @@ Each service exposes clear contracts via TypeScript interfaces or REST endpoints
         createVectorIndex(config: VectorIndexConfig): Promise<void>
     }
 
-**RLS Service**
+### RLS Service
 
     interface RLSService {
         evaluatePolicy(userId: string, table: string, action: string): Promise<boolean>
@@ -82,7 +82,7 @@ Each service exposes clear contracts via TypeScript interfaces or REST endpoints
         deletePolicy(id: string): Promise<void>
     }
 
-**Project Service**
+### Project Service
 
     interface ProjectService {
         createProject(input: CreateProjectInput): Promise<Project>
@@ -91,7 +91,7 @@ Each service exposes clear contracts via TypeScript interfaces or REST endpoints
         getProjectById(id: string): Promise<Project | null>
     }
 
-**Function Service**
+### Function Service
 
     interface FunctionService {
         deploy(name: string, source: string): Promise<FunctionDeployment>
@@ -99,7 +99,7 @@ Each service exposes clear contracts via TypeScript interfaces or REST endpoints
         scheduleCron(id: string, cron: string): Promise<void>
     }
 
-**Auth Service**
+### Auth Service
 
     
     interface AuthService {

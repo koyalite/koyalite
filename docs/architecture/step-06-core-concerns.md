@@ -4,7 +4,7 @@ This step defines the foundational cross-cutting concerns and quality attributes
 
 --- 
 
-**Security**
+## Security
 
 - Role-Based Access Control (RBAC): Built-in via Lucia and Arctic, with per-user and per-role permissions.
 
@@ -20,7 +20,7 @@ This step defines the foundational cross-cutting concerns and quality attributes
 
 ---
 
-**Observability**
+## Observability
 
 - Logging: Centralized with Pino + Loki.
 
@@ -34,7 +34,7 @@ This step defines the foundational cross-cutting concerns and quality attributes
 
 ---
 
-**Resilience & Reliability**
+## Resilience & Reliability
 
 - Retry Logic: For email delivery, webhooks, and edge function execution.
 
@@ -48,7 +48,7 @@ This step defines the foundational cross-cutting concerns and quality attributes
 
 ---
 
-**Testability**
+## Testability
 
 - In-memory SQLite for tests
 
@@ -60,7 +60,7 @@ This step defines the foundational cross-cutting concerns and quality attributes
 
 ---
 
-**Configurability**
+## Configurability
 
 - Environment Support: Dev, staging, prod awareness built in.
 
@@ -70,7 +70,7 @@ This step defines the foundational cross-cutting concerns and quality attributes
 
 ---
 
-**Maintainability**
+## Maintainability
 
 - Monorepo Architecture: Clear folder boundaries by service/app/shared packages.
 

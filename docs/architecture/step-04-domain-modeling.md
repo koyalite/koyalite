@@ -6,7 +6,7 @@ Domain modeling defines the core entities, relationships, and rules that shape h
 
 ## Core Domain Entities
 
-**Webhook**
+### Webhook
 
 - id
 
@@ -24,7 +24,7 @@ Domain modeling defines the core entities, relationships, and rules that shape h
 
 - attempt_count
 
-**Scheduled Task**
+### Scheduled Task
 
 - id
 
@@ -40,7 +40,7 @@ Domain modeling defines the core entities, relationships, and rules that shape h
 
 - next_run
 
-**Project**
+### Project
 
 - id
 
@@ -54,7 +54,7 @@ Domain modeling defines the core entities, relationships, and rules that shape h
 
 - environment (dev, staging, prod) Below are the most important objects in KoyaLite’s data model:
 
-**User**
+### User
 
 - id
 
@@ -66,7 +66,7 @@ Domain modeling defines the core entities, relationships, and rules that shape h
 
 created_at, updated_at
 
-**Role**
+### Role
 
 - id
 
@@ -74,7 +74,7 @@ created_at, updated_at
 
 - permissions (JSON or normalized)
 
-**Table**
+### Table
 
 - id
 
@@ -84,7 +84,7 @@ created_at, updated_at
 
 - columns (1:N relationship)
 
-**Column**
+### Column
 
 - id
 
@@ -92,7 +92,7 @@ created_at, updated_at
 
 - name, type, is_nullable, default, is_unique
 
-**Relationship**
+### Relationship
 
 - id
 
@@ -102,7 +102,7 @@ created_at, updated_at
 
 - constraint_name
 
-**Policy (RLS)**
+### Policy (RLS)
 
 - id
 
@@ -116,7 +116,7 @@ created_at, updated_at
 
 - created_by
 
-**File**
+### File
 
 - id
 
@@ -130,7 +130,7 @@ created_at, updated_at
 
 - created_at
 
-**Edge Function**
+### Edge Function
 
 - id
 
@@ -146,7 +146,7 @@ created_at, updated_at
 
 - schedule (for cron jobs)
 
-**Email Log**
+### Email Log
 
 - id
 
@@ -168,7 +168,7 @@ created_at, updated_at
 
 - created_at
 
-**Audit Log**
+### Audit Log
 
 - id
 
@@ -180,7 +180,7 @@ created_at, updated_at
 
 - timestamp, metadata
 
-**Relationships Summary**
+### Relationships Summary
 
 - One User can own many Projects
 
