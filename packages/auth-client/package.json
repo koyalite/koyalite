@@ -1,0 +1,29 @@
+{
+  "name": "@koyalite/auth-client",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --watch",
+    "lint": "eslint src/",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@koyalite/core-types": "workspace:*",
+    "@koyalite/database": "workspace:*",
+    "@koyalite/logger": "workspace:*",
+    "@lucia-auth/adapter-sqlite": "^3.0.0",
+    "arctic": "^1.0.0",
+    "lucia": "^3.0.0",
+    "oslo": "^1.0.0",
+    "zod": "^3.0.0"
+  },
+  "devDependencies": {
+    "@koyalite/tsconfig": "workspace:*",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  }
+} 

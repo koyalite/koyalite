@@ -1,0 +1,31 @@
+{
+  "name": "@koyalite/database",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --watch",
+    "lint": "eslint src/",
+    "type-check": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate:sqlite",
+    "db:push": "drizzle-kit push:sqlite",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@koyalite/core-types": "workspace:*",
+    "@koyalite/logger": "workspace:*",
+    "better-sqlite3": "^9.0.0",
+    "drizzle-orm": "^0.30.0",
+    "zod": "^3.0.0"
+  },
+  "devDependencies": {
+    "@koyalite/tsconfig": "workspace:*",
+    "@types/better-sqlite3": "^7.0.0",
+    "drizzle-kit": "^0.20.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  }
+} 
