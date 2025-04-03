@@ -1,1 +1,0 @@
-# High-Level Architecture (C4 Model)
