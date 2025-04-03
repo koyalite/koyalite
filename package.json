@@ -1,39 +1,46 @@
 {
-  "name": "koyalite",
-  "version": "0.1.0",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "services/*"
-  ],
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "husky install"
-  },
-  "devDependencies": {
-    "@types/node": "^20.0.0",
-    "prettier": "^3.0.0",
-    "turbo": "^1.12.0",
-    "typescript": "^5.0.0",
-    "husky": "^9.0.0",
-    "lint-staged": "^15.0.0"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "packageManager": "pnpm@8.15.4",
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
+    "name": "koyalite",
+    "version": "0.1.0",
+    "private": true,
+    "workspaces": [
+        "apps/*",
+        "packages/*",
+        "services/*"
     ],
-    "*.{json,md}": [
-      "prettier --write"
-    ]
-  }
-} 
+    "scripts": {
+        "build": "turbo run build",
+        "dev": "turbo run dev",
+        "lint": "turbo run lint",
+        "test": "turbo run test",
+        "test:watch": "turbo run test:watch",
+        "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+        "prepare": "husky install",
+        "db:migrate": "turbo run db:migrate",
+        "db:status": "turbo run db:status"
+    },
+    "devDependencies": {
+        "@types/node": "^20.0.0",
+        "@vitest/coverage-v8": "^1.0.0",
+        "prettier": "^3.0.0",
+        "turbo": "^1.12.0",
+        "typescript": "^5.0.0",
+        "vite": "^5.0.0",
+        "vite-tsconfig-paths": "^4.2.0",
+        "vitest": "^1.0.0",
+        "husky": "^9.0.0",
+        "lint-staged": "^15.0.0"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "packageManager": "pnpm@8.15.4",
+    "lint-staged": {
+        "*.{ts,tsx}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{json,md}": [
+            "prettier --write"
+        ]
+    }
+}
