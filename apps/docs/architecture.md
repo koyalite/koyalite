@@ -91,9 +91,18 @@ KoyaLite is structured as a monorepo using pnpm workspaces, divided into three m
         - API wrapper methods
         - Type definitions
     - `search-client/`:
-        - Weaviate integration
-        - Search query builders
-        - Index management
+        - Dual Search Implementation:
+            - SQLite FTS5 for full-text search
+                - Direct database text search
+                - Index management for FTS tables
+                - Query optimization
+            - Weaviate for AI semantic search
+                - Vector embeddings
+                - Semantic query processing
+                - Index management
+        - Unified search interface
+        - Search strategy selection
+        - Result ranking and scoring
     - `storage-client/`:
         - SeaweedFS client integration
         - File upload/download utilities
@@ -238,8 +247,12 @@ KoyaLite is structured as a monorepo using pnpm workspaces, divided into three m
 3. Data Storage:
 
     - SQLite database access through database package
+        - Full-text search via FTS5
+        - Regular CRUD operations
     - SeaweedFS for file storage via storage-client
-    - Weaviate for search via search-client
+    - Dual Search Capabilities:
+        - SQLite FTS5 for text-based search
+        - Weaviate for AI-powered semantic search
 
 4. Background Processing:
     - Scheduled tasks via scheduler service

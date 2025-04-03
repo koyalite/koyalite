@@ -1,26 +1,29 @@
 {
-  "name": "@koyalite/search-client",
-  "version": "0.1.0",
-  "private": true,
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "dev": "tsup src/index.ts --format cjs,esm --watch",
-    "lint": "eslint src/",
-    "type-check": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@koyalite/core-types": "workspace:*",
-    "@koyalite/logger": "workspace:*",
-    "weaviate-ts-client": "^2.0.0",
-    "zod": "^3.0.0"
-  },
-  "devDependencies": {
-    "@koyalite/tsconfig": "workspace:*",
-    "@types/node": "^20.0.0",
-    "tsup": "^8.0.0",
-    "typescript": "^5.0.0"
-  }
-} 
+    "name": "@koyalite/search-client",
+    "version": "0.1.0",
+    "private": true,
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "build": "tsup src/index.ts --format cjs,esm --dts",
+        "dev": "tsup src/index.ts --format cjs,esm --watch",
+        "lint": "eslint src/",
+        "test": "vitest"
+    },
+    "dependencies": {
+        "@koyalite/core-types": "workspace:*",
+        "@koyalite/logger": "workspace:*",
+        "better-sqlite3": "^9.0.0",
+        "weaviate-ts-client": "^2.0.0",
+        "zod": "^3.0.0"
+    },
+    "devDependencies": {
+        "@koyalite/tsconfig": "workspace:*",
+        "@types/better-sqlite3": "^7.0.0",
+        "@types/node": "^20.0.0",
+        "tsup": "^8.0.0",
+        "typescript": "^5.0.0",
+        "vitest": "^1.0.0"
+    }
+}
