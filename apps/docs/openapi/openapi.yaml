@@ -1,0 +1,353 @@
+openapi: 3.1.0
+info:
+    title: KoyaLite API
+    version: 0.1.0
+    description: API documentation for KoyaLite platform
+
+servers:
+    - url: http://localhost:3000/api
+      description: Local development
+    - url: https://api.koyalite.com
+      description: Production environment
+
+components:
+    securitySchemes:
+        bearerAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
+
+    schemas:
+        User:
+            type: object
+            properties:
+                id:
+                    type: string
+                    format: uuid
+                email:
+                    type: string
+                    format: email
+                createdAt:
+                    type: string
+                    format: date-time
+                updatedAt:
+                    type: string
+                    format: date-time
+            required:
+                - id
+                - email
+                - createdAt
+                - updatedAt
+
+        Organization:
+            type: object
+            properties:
+                id:
+                    type: string
+                    format: uuid
+                name:
+                    type: string
+                createdAt:
+                    type: string
+                    format: date-time
+                updatedAt:
+                    type: string
+                    format: date-time
+            required:
+                - id
+                - name
+                - createdAt
+                - updatedAt
+
+        Role:
+            type: object
+            properties:
+                id:
+                    type: string
+                    format: uuid
+                name:
+                    type: string
+                    enum: [owner, admin, member, viewer]
+                permissions:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/Permission"
+            required:
+                - id
+                - name
+                - permissions
+
+        Permission:
+            type: object
+            properties:
+                action:
+                    type: string
+                    enum: [create, read, update, delete, manage]
+                resource:
+                    type: string
+                    enum: [project, user, organization, role, policy, function]
+            required:
+                - action
+                - resource
+
+        UserOrganization:
+            type: object
+            properties:
+                id:
+                    type: string
+                    format: uuid
+                userId:
+                    type: string
+                    format: uuid
+                organizationId:
+                    type: string
+                    format: uuid
+                roleId:
+                    type: string
+                    format: uuid
+                createdAt:
+                    type: string
+                    format: date-time
+                updatedAt:
+                    type: string
+                    format: date-time
+            required:
+                - id
+                - userId
+                - organizationId
+                - roleId
+                - createdAt
+                - updatedAt
+
+        Project:
+            type: object
+            properties:
+                id:
+                    type: string
+                    format: uuid
+                name:
+                    type: string
+                organizationId:
+                    type: string
+                    format: uuid
+                ownerId:
+                    type: string
+                    format: uuid
+                settings:
+                    $ref: "#/components/schemas/ProjectSettings"
+                createdAt:
+                    type: string
+                    format: date-time
+                updatedAt:
+                    type: string
+                    format: date-time
+            required:
+                - id
+                - name
+                - organizationId
+                - ownerId
+                - settings
+                - createdAt
+                - updatedAt
+
+        ProjectSettings:
+            type: object
+            properties:
+                compliance_flags:
+                    type: object
+                    properties:
+                        hipaa_enabled:
+                            type: boolean
+                        gdpr_enabled:
+                            type: boolean
+                        ccpa_enabled:
+                            type: boolean
+                rate_limits:
+                    type: object
+                    properties:
+                        requests_per_second:
+                            type: integer
+                        burst_size:
+                            type: integer
+                environment:
+                    type: string
+                    enum: [development, staging, production]
+
+        Error:
+            type: object
+            properties:
+                code:
+                    type: string
+                message:
+                    type: string
+                details:
+                    type: object
+            required:
+                - code
+                - message
+
+paths:
+    /users:
+        get:
+            summary: List users
+            operationId: listUsers
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                      type: integer
+                      default: 1
+                - name: limit
+                  in: query
+                  schema:
+                      type: integer
+                      default: 10
+            responses:
+                "200":
+                    description: List of users
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    data:
+                                        type: array
+                                        items:
+                                            $ref: "#/components/schemas/User"
+                                    meta:
+                                        type: object
+                                        properties:
+                                            total:
+                                                type: integer
+                                            page:
+                                                type: integer
+                                            limit:
+                                                type: integer
+                "401":
+                    description: Unauthorized
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+
+    /organizations:
+        get:
+            summary: List organizations the user is a member of
+            operationId: listOrganizations
+            responses:
+                "200":
+                    description: List of organizations
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    data:
+                                        type: array
+                                        items:
+                                            $ref: "#/components/schemas/Organization"
+                                    meta:
+                                        type: object
+                                        properties:
+                                            total:
+                                                type: integer
+                                            page:
+                                                type: integer
+                                            limit:
+                                                type: integer
+        post:
+            summary: Create a new organization
+            operationId: createOrganization
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                name:
+                                    type: string
+                        required:
+                            - name
+            responses:
+                "201":
+                    description: Organization created
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    data:
+                                        $ref: "#/components/schemas/Organization"
+
+    /organizations/{organizationId}/members:
+        get:
+            summary: List organization members
+            operationId: listOrganizationMembers
+            parameters:
+                - name: organizationId
+                  in: path
+                  required: true
+                  schema:
+                      type: string
+                      format: uuid
+            responses:
+                "200":
+                    description: List of organization members
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    data:
+                                        type: array
+                                        items:
+                                            $ref: "#/components/schemas/UserOrganization"
+                                    meta:
+                                        type: object
+                                        properties:
+                                            total:
+                                                type: integer
+                                            page:
+                                                type: integer
+                                            limit:
+                                                type: integer
+        post:
+            summary: Add a member to the organization
+            operationId: addOrganizationMember
+            parameters:
+                - name: organizationId
+                  in: path
+                  required: true
+                  schema:
+                      type: string
+                      format: uuid
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                userId:
+                                    type: string
+                                    format: uuid
+                                roleId:
+                                    type: string
+                                    format: uuid
+                        required:
+                            - userId
+                            - roleId
+            responses:
+                "201":
+                    description: Member added
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    data:
+                                        $ref: "#/components/schemas/UserOrganization"
+
+security:
+    - bearerAuth: []
