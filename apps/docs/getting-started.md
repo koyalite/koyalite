@@ -12,67 +12,73 @@ This guide will help you set up KoyaLite and create your first application.
 ## Quick Start
 
 1. **Create a new KoyaLite project**
-   ```bash
-   # Create a new project
-   npx create-koyalite-app my-app
-   cd my-app
 
-   # Install dependencies
-   pnpm install
-   ```
+    ```bash
+    # Create a new project
+    npx create-koyalite-app my-app
+    cd my-app
+
+    # Install dependencies
+    pnpm install
+    ```
 
 2. **Start the development environment**
-   ```bash
-   # Start all services
-   pnpm dev
-   ```
 
-   This will start:
-   - API server at http://localhost:3000
-   - Studio UI at http://localhost:3001
-   - Admin Dashboard at http://localhost:3002
+    ```bash
+    # Start all services
+    pnpm dev
+    ```
+
+    This will start:
+
+    - API server at http://localhost:3000
+    - Studio UI at http://localhost:3001
+    - Admin Dashboard at http://localhost:3002
 
 3. **Create your first table**
-   ```typescript
-   // schema.ts
-   import { table, text, timestamp } from '@koyalite/core-types';
 
-   export const posts = table('posts', {
-     title: text('title').notNull(),
-     content: text('content').notNull(),
-     created_at: timestamp('created_at').defaultNow(),
-   });
-   ```
+    ```typescript
+    // schema.ts
+    import { table, text, timestamp } from "@koyalite/core-types";
+
+    export const posts = table("posts", {
+        title: text("title").notNull(),
+        content: text("content").notNull(),
+        created_at: timestamp("created_at").defaultNow(),
+    });
+    ```
 
 4. **Add Row Level Security**
-   ```typescript
-   // policies.ts
-   import { rls } from '@koyalite/rls';
 
-   rls.policy('posts', {
-     create: 'auth.role = "admin"',
-     read: 'true',
-     update: 'auth.uid = user_id',
-     delete: 'auth.role = "admin"',
-   });
-   ```
+    ```typescript
+    // policies.ts
+    import { rls } from "@koyalite/rls";
+
+    rls.policy("posts", {
+        create: 'auth.role = "admin"',
+        read: "true",
+        update: "auth.uid = user_id",
+        delete: 'auth.role = "admin"',
+    });
+    ```
 
 5. **Use the SDK in your frontend**
-   ```typescript
-   import { KoyaLite } from '@koyalite/sdk';
 
-   const client = new KoyaLite({
-     apiKey: 'your-api-key',
-   });
+    ```typescript
+    import { KoyaLite } from "@koyalite/sdk";
 
-   // Query data
-   const posts = await client.database.query('posts');
+    const client = new KoyaLite({
+        apiKey: "your-api-key",
+    });
 
-   // Real-time subscriptions
-   client.database.subscribe('posts', (post) => {
-     console.log('New post:', post);
-   });
-   ```
+    // Query data
+    const posts = await client.database.query("posts");
+
+    // Real-time subscriptions
+    client.database.subscribe("posts", (post) => {
+        console.log("New post:", post);
+    });
+    ```
 
 ## Project Structure
 
@@ -100,43 +106,43 @@ my-app/
 KoyaLite can be configured through `koyalite.config.ts`:
 
 ```typescript
-import { defineConfig } from '@koyalite/core';
+import { defineConfig } from "@koyalite/core";
 
 export default defineConfig({
-  // Project name
-  name: 'my-app',
+    // Project name
+    name: "my-app",
 
-  // Database configuration
-  database: {
-    // Enable WAL mode for better performance
-    walMode: true,
-    // Auto-vacuum settings
-    autoVacuum: true,
-  },
+    // Database configuration
+    database: {
+        // Enable WAL mode for better performance
+        walMode: true,
+        // Auto-vacuum settings
+        autoVacuum: true,
+    },
 
-  // Authentication settings
-  auth: {
-    providers: ['github', 'google'],
-    sessionDuration: '7d',
-  },
+    // Authentication settings
+    auth: {
+        providers: ["github", "google"],
+        sessionDuration: "7d",
+    },
 
-  // Storage configuration
-  storage: {
-    provider: 'seaweedfs',
-    bucket: 'my-app',
-  },
+    // Storage configuration
+    storage: {
+        provider: "seaweedfs",
+        bucket: "my-app",
+    },
 
-  // Email settings
-  email: {
-    provider: 'resend',
-    from: 'noreply@myapp.com',
-  },
+    // Email settings
+    email: {
+        provider: "resend",
+        from: "noreply@myapp.com",
+    },
 
-  // Function settings
-  functions: {
-    runtime: 'deno',
-    memory: '128MB',
-  },
+    // Function settings
+    functions: {
+        runtime: "deno",
+        memory: "128MB",
+    },
 });
 ```
 
@@ -217,30 +223,32 @@ pnpm koyalite functions deploy hello
 ### Common Issues
 
 1. **Database Locked**
-   ```bash
-   # Reset the database lock
-   pnpm koyalite db unlock
-   ```
+
+    ```bash
+    # Reset the database lock
+    pnpm koyalite db unlock
+    ```
 
 2. **Port Conflicts**
-   ```bash
-   # Change ports in koyalite.config.ts
-   export default defineConfig({
-     ports: {
-       api: 3000,
-       studio: 3001,
-       admin: 3002,
-     },
-   });
-   ```
+
+    ```bash
+    # Change ports in koyalite.config.ts
+    export default defineConfig({
+      ports: {
+        api: 3000,
+        studio: 3001,
+        admin: 3002,
+      },
+    });
+    ```
 
 3. **Performance Issues**
-   - Enable WAL mode
-   - Add indexes to frequently queried columns
-   - Use connection pooling in production
+    - Enable WAL mode
+    - Add indexes to frequently queried columns
+    - Use connection pooling in production
 
 ### Getting Help
 
 - Check the [FAQ](./faq.md)
 - Join our [Discord](https://discord.gg/koyalite)
-- Open an [Issue](https://github.com/koyalite/koyalite/issues) 
+- Open an [Issue](https://github.com/koyalite/koyalite/issues)

@@ -13,14 +13,15 @@ Authorization: Bearer your-jwt-token
 ### Getting an API Key
 
 1. Through the Admin Dashboard:
-   - Navigate to Settings → API Keys
-   - Click "Create New Key"
-   - Save the key securely
+
+    - Navigate to Settings → API Keys
+    - Click "Create New Key"
+    - Save the key securely
 
 2. Using the CLI:
-   ```bash
-   pnpm koyalite keys create --name "my-api-key"
-   ```
+    ```bash
+    pnpm koyalite keys create --name "my-api-key"
+    ```
 
 ## API Endpoints
 
@@ -81,19 +82,15 @@ POST /graphql
 
 ```graphql
 query {
-  posts(
-    where: { published: { equals: true } }
-    orderBy: { createdAt: desc }
-    take: 10
-  ) {
-    id
-    title
-    content
-    author {
-      name
-      email
+    posts(where: { published: { equals: true } }, orderBy: { createdAt: desc }, take: 10) {
+        id
+        title
+        content
+        author {
+            name
+            email
+        }
     }
-  }
 }
 ```
 
@@ -102,22 +99,22 @@ query {
 ### WebSocket
 
 ```javascript
-const ws = new WebSocket('ws://localhost:3000/ws');
+const ws = new WebSocket("ws://localhost:3000/ws");
 
 ws.onmessage = (event) => {
-  const data = JSON.parse(event.data);
-  console.log('Received:', data);
+    const data = JSON.parse(event.data);
+    console.log("Received:", data);
 };
 ```
 
 ### Server-Sent Events
 
 ```javascript
-const events = new EventSource('/api/v1/events');
+const events = new EventSource("/api/v1/events");
 
 events.onmessage = (event) => {
-  const data = JSON.parse(event.data);
-  console.log('Received:', data);
+    const data = JSON.parse(event.data);
+    console.log("Received:", data);
 };
 ```
 
@@ -133,15 +130,16 @@ All errors follow this format:
 
 ```json
 {
-  "error": {
-    "code": "ERROR_CODE",
-    "message": "Human readable message",
-    "details": {}
-  }
+    "error": {
+        "code": "ERROR_CODE",
+        "message": "Human readable message",
+        "details": {}
+    }
 }
 ```
 
 Common error codes:
+
 - `AUTH_REQUIRED`: Authentication required
 - `INVALID_TOKEN`: Invalid or expired token
 - `PERMISSION_DENIED`: Insufficient permissions
@@ -155,29 +153,30 @@ Common error codes:
 The TypeScript SDK provides a type-safe way to interact with the API:
 
 ```typescript
-import { KoyaLite } from '@koyalite/sdk';
+import { KoyaLite } from "@koyalite/sdk";
 
 const client = new KoyaLite({
-  apiKey: 'your-api-key',
+    apiKey: "your-api-key",
 });
 
 // Query data
-const posts = await client.database.query('posts');
+const posts = await client.database.query("posts");
 
 // Real-time subscriptions
-client.database.subscribe('posts', (post) => {
-  console.log('New post:', post);
+client.database.subscribe("posts", (post) => {
+    console.log("New post:", post);
 });
 
 // File upload
 const file = await client.storage.upload(fileBuffer, {
-  path: 'images/avatar.png',
+    path: "images/avatar.png",
 });
 ```
 
 ## OpenAPI Specification
 
 The complete OpenAPI specification is available at:
+
 - JSON: `/api/v1/openapi.json`
 - YAML: `/api/v1/openapi.yaml`
 - UI: `/api/docs` (Swagger UI)
@@ -185,6 +184,7 @@ The complete OpenAPI specification is available at:
 ## Postman Collection
 
 Download our Postman collection:
+
 - [KoyaLite.postman_collection.json](https://api.koyalite.dev/postman)
 
 ## API Versioning
@@ -200,11 +200,11 @@ By default, CORS is enabled for all origins in development. Configure it in prod
 ```typescript
 // koyalite.config.ts
 export default defineConfig({
-  api: {
-    cors: {
-      origin: ['https://your-domain.com'],
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    api: {
+        cors: {
+            origin: ["https://your-domain.com"],
+            methods: ["GET", "POST", "PUT", "DELETE"],
+        },
     },
-  },
 });
-``` 
+```

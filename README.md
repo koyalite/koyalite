@@ -40,6 +40,7 @@ koyalite/
 ## Tech Stack
 
 ### Backend
+
 - **Runtime**: Node.js 18+
 - **API Layer**: Express.js + GraphQL Yoga
 - **Database**: SQLite + Drizzle ORM
@@ -49,6 +50,7 @@ koyalite/
 - **Functions**: Deno Runtime
 
 ### Frontend
+
 - **Framework**: Next.js 14
 - **UI Components**: Radix UI
 - **Styling**: Tailwind CSS
@@ -56,6 +58,7 @@ koyalite/
 - **Forms**: React Hook Form + Zod
 
 ### Developer Experience
+
 - **Language**: TypeScript
 - **Package Manager**: pnpm
 - **Monorepo**: Turborepo
@@ -64,52 +67,57 @@ koyalite/
 - **Documentation**: Docusaurus
 
 ### Infrastructure
+
 - **Gateway**: NGINX
-- **Observability**: 
-  - Logging: Pino + Loki
-  - Metrics: Grafana
-  - Tracing: OpenTelemetry
-  - Analytics: PostHog
+- **Observability**:
+    - Logging: Pino + Loki
+    - Metrics: Grafana
+    - Tracing: OpenTelemetry
+    - Analytics: PostHog
 
 ## Getting Started
 
 1. **Prerequisites**
-   ```bash
-   # Install pnpm if not already installed
-   npm install -g pnpm
 
-   # Install dependencies
-   pnpm install
-   ```
+    ```bash
+    # Install pnpm if not already installed
+    npm install -g pnpm
+
+    # Install dependencies
+    pnpm install
+    ```
 
 2. **Development Setup**
-   ```bash
-   # Start all services in development mode
-   pnpm dev
 
-   # Or start specific apps/services
-   pnpm dev --filter=admin
-   pnpm dev --filter=studio
-   pnpm dev --filter=api
-   ```
+    ```bash
+    # Start all services in development mode
+    pnpm dev
+
+    # Or start specific apps/services
+    pnpm dev --filter=admin
+    pnpm dev --filter=studio
+    pnpm dev --filter=api
+    ```
 
 3. **Build**
-   ```bash
-   # Build all packages and apps
-   pnpm build
 
-   # Build specific package/app
-   pnpm build --filter=@koyalite/sdk
-   ```
+    ```bash
+    # Build all packages and apps
+    pnpm build
+
+    # Build specific package/app
+    pnpm build --filter=@koyalite/sdk
+    ```
 
 4. **Testing**
-   ```bash
-   # Run all tests
-   pnpm test
 
-   # Run tests with coverage
-   pnpm test:coverage
-   ```
+    ```bash
+    # Run all tests
+    pnpm test
+
+    # Run tests with coverage
+    pnpm test:coverage
+    ```
 
 ## Documentation
 
@@ -123,28 +131,36 @@ koyalite/
 ## Packages
 
 ### @koyalite/sdk
+
 TypeScript SDK for interacting with KoyaLite APIs. Includes:
+
 - HTTP client with retry logic
 - WebSocket support
 - Server-Sent Events
 - Type-safe API methods
 
 ### @koyalite/rls
+
 Row Level Security engine for policy evaluation:
+
 - SQL-like policy syntax
 - Context-aware evaluation
 - Variable substitution
 - Function support
 
 ### @koyalite/ui-components
+
 Shared UI components built with Radix UI:
+
 - DataTable with sorting
 - Dialog/Modal system
 - Form components
 - Buttons and inputs
 
 ### @koyalite/email-templates
+
 React-based email templates:
+
 - Welcome emails
 - Notification templates
 - Password reset flows
@@ -169,6 +185,7 @@ MIT
 ### Core Services
 
 #### API Service (`apps/api`)
+
 - Main REST and GraphQL API gateway
 - Handles authentication and authorization
 - Implements RLS policy enforcement
@@ -176,6 +193,7 @@ MIT
 - Manages database connections and transactions
 
 #### Admin Dashboard (`apps/admin`)
+
 - Administrative interface for system management
 - User and role management
 - RLS policy configuration
@@ -184,6 +202,7 @@ MIT
 - Email template management
 
 #### Studio UI (`apps/studio`)
+
 - Visual database management interface
 - Schema design and visualization
 - Data browsing and editing
@@ -191,6 +210,7 @@ MIT
 - Real-time data preview
 
 #### Documentation Site (`apps/docs`)
+
 - Developer documentation and guides
 - API reference documentation
 - SDK usage examples
@@ -200,7 +220,9 @@ MIT
 ### Shared Packages
 
 #### SDK (`packages/sdk`)
+
 The TypeScript client SDK provides:
+
 - Type-safe API client
 - Real-time subscriptions
 - File upload/download
@@ -208,7 +230,9 @@ The TypeScript client SDK provides:
 - Error handling
 
 #### RLS Engine (`packages/rls`)
+
 Row Level Security implementation with:
+
 - Policy parsing and compilation
 - Context-aware evaluation
 - Variable substitution
@@ -216,7 +240,9 @@ Row Level Security implementation with:
 - Performance optimization
 
 #### Storage Client (`packages/storage-client`)
+
 SeaweedFS client implementation:
+
 - File upload/download
 - Streaming support
 - Metadata management
@@ -224,7 +250,9 @@ SeaweedFS client implementation:
 - Chunked transfers
 
 #### Search Client (`packages/search-client`)
+
 Weaviate integration providing:
+
 - Vector search capabilities
 - Semantic query processing
 - Batch operations
@@ -232,7 +260,9 @@ Weaviate integration providing:
 - Query optimization
 
 #### Logger (`packages/logger`)
+
 Structured logging with:
+
 - Log level management
 - Context propagation
 - Output formatting
@@ -240,7 +270,9 @@ Structured logging with:
 - Performance monitoring
 
 #### Email Templates (`packages/email-templates`)
+
 React-based email system:
+
 - Responsive templates
 - Dynamic content
 - Localization support
@@ -248,7 +280,9 @@ React-based email system:
 - Template management
 
 #### UI Components (`packages/ui-components`)
+
 Shared React components:
+
 - Data tables and grids
 - Forms and inputs
 - Modals and dialogs
@@ -256,7 +290,9 @@ Shared React components:
 - Loading states
 
 #### Telemetry (`packages/telemetry`)
+
 Observability infrastructure:
+
 - Distributed tracing
 - Metrics collection
 - Error tracking
@@ -273,16 +309,16 @@ graph TD
     API --> Storage[Storage Service]
     API --> Search[Search Service]
     API --> Email[Email Service]
-    
+
     Admin[Admin Dashboard] --> API
     Studio[Studio UI] --> API
-    
+
     subgraph Observability
         Telemetry[Telemetry Service]
         Logging[Logging Service]
         Metrics[Metrics Collection]
     end
-    
+
     API --> Telemetry
     API --> Logging
     API --> Metrics
@@ -302,34 +338,37 @@ graph TD
 - **Authentication**: JWT-based with session support
 - **Authorization**: Role-based access control (RBAC)
 - **Row-Level Security**: Fine-grained data access control
-- **API Security**: 
-  - CORS configuration
-  - Rate limiting
-  - Request validation
-  - Input sanitization
+- **API Security**:
+    - CORS configuration
+    - Rate limiting
+    - Request validation
+    - Input sanitization
 - **Data Security**:
-  - Encryption at rest
-  - Secure connections
-  - Audit logging
+    - Encryption at rest
+    - Secure connections
+    - Audit logging
 
 ### Deployment Options
 
 1. **Local Development**
-   ```bash
-   pnpm dev
-   ```
+
+    ```bash
+    pnpm dev
+    ```
 
 2. **Docker Compose**
-   ```bash
-   docker-compose up -d
-   ```
+
+    ```bash
+    docker-compose up -d
+    ```
 
 3. **Kubernetes**
-   - Helm charts available
-   - Horizontal scaling support
-   - Service mesh ready
+
+    - Helm charts available
+    - Horizontal scaling support
+    - Service mesh ready
 
 4. **Cloud Platforms**
-   - AWS ECS/EKS
-   - Google Cloud Run/GKE
-   - Azure Container Apps/AKS
+    - AWS ECS/EKS
+    - Google Cloud Run/GKE
+    - Azure Container Apps/AKS

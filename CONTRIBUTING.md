@@ -13,82 +13,86 @@ By participating in this project, you agree to abide by our [Code of Conduct](./
 1. Check if the bug has already been reported in our [Issues](https://github.com/koyalite/koyalite/issues)
 2. If not, create a new issue using our bug report template
 3. Include:
-   - Clear title and description
-   - Steps to reproduce
-   - Expected vs actual behavior
-   - Version information
-   - Error messages or logs
+    - Clear title and description
+    - Steps to reproduce
+    - Expected vs actual behavior
+    - Version information
+    - Error messages or logs
 
 ### Suggesting Enhancements
 
 1. Check existing [Issues](https://github.com/koyalite/koyalite/issues) and [Discussions](https://github.com/koyalite/koyalite/discussions)
 2. Create a new issue using our feature request template
 3. Describe:
-   - The problem you're trying to solve
-   - Your proposed solution
-   - Alternative solutions considered
-   - Example use cases
+    - The problem you're trying to solve
+    - Your proposed solution
+    - Alternative solutions considered
+    - Example use cases
 
 ### Pull Requests
 
 1. Fork the repository
 2. Create a new branch:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
 3. Make your changes
 4. Run tests and linting:
-   ```bash
-   pnpm test
-   pnpm lint
-   ```
+    ```bash
+    pnpm test
+    pnpm lint
+    ```
 5. Commit your changes using conventional commits:
-   ```bash
-   git commit -m "feat: add new feature"
-   ```
+    ```bash
+    git commit -m "feat: add new feature"
+    ```
 6. Push to your fork:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
+    ```bash
+    git push origin feature/your-feature-name
+    ```
 7. Create a Pull Request
 
 ## Development Setup
 
 1. **Fork and Clone**
-   ```bash
-   git clone https://github.com/yourusername/koyalite.git
-   cd koyalite
-   ```
+
+    ```bash
+    git clone https://github.com/yourusername/koyalite.git
+    cd koyalite
+    ```
 
 2. **Install Dependencies**
-   ```bash
-   pnpm install
-   ```
+
+    ```bash
+    pnpm install
+    ```
 
 3. **Set Up Environment**
-   ```bash
-   cp .env.example .env
-   ```
+
+    ```bash
+    cp .env.example .env
+    ```
 
 4. **Start Development Server**
-   ```bash
-   pnpm dev
-   ```
+    ```bash
+    pnpm dev
+    ```
 
 ## Project Structure
 
 - `apps/` - Applications
-  - `admin/` - Admin dashboard
-  - `studio/` - Database studio
-  - `docs/` - Documentation site
-  - `api/` - Main API service
+
+    - `admin/` - Admin dashboard
+    - `studio/` - Database studio
+    - `docs/` - Documentation site
+    - `api/` - Main API service
 
 - `packages/` - Shared packages
-  - `core-types/` - TypeScript types
-  - `sdk/` - Client SDK
-  - `rls/` - Row Level Security
-  - `logger/` - Logging utilities
-  - etc.
+    - `core-types/` - TypeScript types
+    - `sdk/` - Client SDK
+    - `rls/` - Row Level Security
+    - `logger/` - Logging utilities
+    - etc.
 
 ## Coding Guidelines
 
@@ -161,4 +165,4 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License. 
+By contributing, you agree that your contributions will be licensed under the MIT License.

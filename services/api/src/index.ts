@@ -1,11 +1,11 @@
-import express from 'express';
-import { createYoga } from 'graphql-yoga';
-import pinoHttp from 'pino-http';
-import { logger } from '@koyalite/logger';
-import { schema } from './schema';
-import { restRouter } from './routes';
-import { authMiddleware } from './middleware/auth';
-import { errorHandler } from './middleware/error';
+import express from "express";
+import { createYoga } from "graphql-yoga";
+import pinoHttp from "pino-http";
+import { logger } from "@koyalite/logger";
+import { schema } from "./schema";
+import { restRouter } from "./routes";
+import { authMiddleware } from "./middleware/auth";
+import { errorHandler } from "./middleware/error";
 
 const app = express();
 
@@ -19,13 +19,13 @@ app.use(express.json());
 app.use(authMiddleware);
 
 // REST API routes
-app.use('/api/v1', restRouter);
+app.use("/api/v1", restRouter);
 
 // GraphQL endpoint
 const yoga = createYoga({
-  schema,
-  graphqlEndpoint: '/api/graphql',
-  // Add any GraphQL-specific middleware or plugins here
+    schema,
+    graphqlEndpoint: "/api/graphql",
+    // Add any GraphQL-specific middleware or plugins here
 });
 app.use(yoga.graphqlEndpoint, yoga);
 
@@ -35,5 +35,5 @@ app.use(errorHandler);
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  logger.info({ port }, 'API server started');
-}); 
+    logger.info({ port }, "API server started");
+});
