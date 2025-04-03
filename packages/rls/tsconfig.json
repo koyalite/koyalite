@@ -1,6 +1,6 @@
 {
-    "extends": "@koyalite/tsconfig/react.json",
-    "include": ["src/**/*.ts", "src/**/*.tsx"],
+    "extends": "@koyalite/tsconfig/node.json",
+    "include": ["src/**/*.ts"],
     "exclude": ["node_modules", "dist"],
     "compilerOptions": {
         "outDir": "./dist",
