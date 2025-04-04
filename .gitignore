@@ -12,6 +12,7 @@ build
 .next
 out
 .turbo
+*.d.ts
 
 # Environment
 .env
